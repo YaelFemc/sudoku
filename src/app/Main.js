@@ -52,7 +52,7 @@ const MainComp = () => {
   const divideToCubes = () => {
     for (let i = 0; i < cubesLength.length; i++) {
       if (squaresInBoard.cubeID === i + 1) {
-        cubesInBoard.push([]);
+        // cubesInBoard.push([]);
       }
     }
   };
