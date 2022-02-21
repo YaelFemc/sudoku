@@ -35,175 +35,94 @@ const MainComp = () => {
   console.log(calcCube({ rowID: 5, colID: 7 }));
 
   const calcSquares = () => {
-    // squaresInBoard.push({});
     rowsInCube.map((row) =>
       colsInCube.map((col) =>
         squaresInBoard.push({
           rowID: row.ID,
           colID: col.ID,
           cubeID: calcCube({ rowID: row.ID, colID: col.ID }),
+          // value:
         })
       )
     );
     squaresInBoard.map((square, i) => (square.ID = i + 1));
+    console.log(squaresInBoard);
   };
   calcSquares();
-  // console.log(squaresInBoard);
-  const divideToCubes = () => {
-    for (let i = 0; i < cubesLength.length; i++) {
-      if (squaresInBoard.cubeID === i + 1) {
-        // cubesInBoard.push([]);
-      }
-    }
-  };
 
-  const [Row, setRow] = useState([...rowsInCube]);
+  const calcSquaresValue = () => {
+    const random = Math.floor(Math.random() * 10);
+    console.log(random);
+    // if (random !== 0 && squaresInBoard.value) {
+  };
+  // console.log(squaresInBoard);
+  // const divideToCubes = () => {
+  //   for (let i = 0; i < cubesLength; i++) {
+  //     console.log("squaresInBoard", squaresInBoard[0].cubeID, i + 1);
+
+  //     squaresInBoard.map((square) => {
+  //       if (square.cubeID === i + 1);
+  //       return;
+  //     });
+  //   }
+  //   console.log(cubesInBoard);
+  // };
+
+  // divideToCubes();
+
+  // const [Row, setRow] = useState([...rowsInCube]);
+
   return (
     <div>
-      <table className="mainT">
-        <thead></thead>
-        <tbody>
-          {squaresInBoard.map((square) => {
-            // console.log(square);
-            return square.rowID === 1 || square.rowID === 4 || square.rowID === 7 ? (
-              <tr className="bTop">
-                <td className="bLeft"> {square.colID}</td>
-                <td></td>
-                <td className="bRight"></td>
-                <td className="bLeft"></td>
-                <td></td>
-                <td className="bRight"></td>
-                <td className="bLeft"></td>
-                <td></td>
-                <td className="bRight"></td>
-              </tr>
-            ) : square.rowID === 3 || square.rowID === 6 || square.rowID === 9 ? (
-              <tr className="bBottom">
-                <td className="bLeft"></td>
-                <td></td>
-                <td className="bRight"></td>
-                <td className="bLeft"></td>
-                <td></td>
-                <td className="bRight"></td>
-                <td className="bLeft"></td>
-                <td></td>
-                <td className="bRight"></td>
-              </tr>
-            ) : (
-              <tr className="bTop">
-                <td className="bLeft"></td>
-                <td>d</td>
-                <td className="bRight"></td>
-                <td className="bLeft"></td>
-                <td></td>
-                <td className="bRight"></td>
-                <td className="bLeft"></td>
-                <td></td>
-                <td className="bRight"></td>
-              </tr>
-            );
-          })}
-          {/* <tr className="bTop">
-            <td className="bLeft"></td>
-            <td>d</td>
-            <td className="bRight"></td>
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-          </tr>
-          <tr>
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-          </tr>
-          <tr className="bBottom">
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-          </tr>
-          <tr className="bTop">
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-          </tr>
-          <tr>
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-          </tr>
-          <tr className="bBottom">
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-          </tr>
-          <tr className="bTop">
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-          </tr>
-          <tr>
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-          </tr>
-          <tr className="bBottom">
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td>
-            <td className="bLeft"></td>
-            <td></td>
-            <td className="bRight"></td> */}
-          {/* </tr> */}
-        </tbody>
-      </table>
+      hello
+      {/* <table className="mainT"> */}
+      {/* <thead></thead> */}
+      {/* <tbody> */}
+      {/* {squaresInBoard.map((square) => {
+              // console.log(square);
+              return square.rowID === 1 || square.rowID === 4 || square.rowID === 7 ? (
+                <tr key={square.ID} className="bTop">
+                  <td className="bLeft"></td>
+                  <td></td>
+                  <td className="bRight"></td>
+                  <td className="bLeft"></td>
+                  <td></td>
+                  <td className="bRight"></td>
+                  <td className="bLeft"></td>
+                  <td></td>
+                  <td className="bRight"></td>
+                </tr>
+              )  */}
+      {/* // : square.rowID === 3 || square.rowID === 6 || square.rowID === 9 ? ( 
+            //<tr key={square.ID} className="bBottom">
+              // <td className="bLeft"></td>
+              // <td></td>
+              // <td className="bRight"></td>
+              // <td className="bLeft"></td>
+              // <td></td>
+              // <td className="bRight"></td>
+              // <td className="bLeft"></td>
+              // <td></td>
+              // <td className="bRight"></td>
+            </tr>
+            // ) : ( 
+            <tr key={square.ID} className="bTop">
+              // <td className="bLeft"></td>
+              // <td>d</td>
+              // <td className="bRight"></td>
+              // <td className="bLeft"></td>
+              // <td></td>
+              // <td className="bRight"></td>
+              // <td className="bLeft"></td>
+              // <td></td>
+              // <td className="bRight"></td>
+              //
+            </tr> */}
+      {/* // ); */}
+      {/* } */}
+      {/* )} */}
+      {/* </tbody> */}
+      {/* </table> */}
     </div>
   );
 };

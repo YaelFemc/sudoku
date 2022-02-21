@@ -1,0 +1,28 @@
+/* tr :nth-child(3n) {
+  border-right-width: 5px;
+}
+
+tr :first-child {
+  border-left-width: 5px;
+}
+
+tr :nth-of-type(3n + 3) {
+  border-top-width: 5px;
+} */
+
+tr.top > td {
+  border-top-width: 5px;
+}
+tr.bottom > td {
+  border-bottom-width: 5px;
+}
+td.left {
+  border-left-width: 5px;
+}
+td.right {
+  border-right-width: 5px;
+}
+
+table {
+  color: green;
+}
