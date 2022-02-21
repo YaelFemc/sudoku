@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "./Board.css";
+import SqrValues from "../SqValues/SqrValues";
+
 const Board = () => {
   const [square, setSquare] = useState([]);
+  const [iptVal, setIptVal] = useState({});
+  //   const [iptID, setIptID] = useState(0);
 
   const createBoard = (arr) => {
     for (let i = 0; i < 81; i++) {
-      arr.push({ ID: i + 1 });
+      if (arr.length <= 80) {
+        arr.push({ ID: i + 1 });
+      }
     }
 
     createRowNCol(arr);
     if (arr.length > 0 && arr.length < 81) {
       setSquare(arr);
     }
-    console.log(square);
   };
 
   const createRowNCol = (arr) => {
@@ -49,17 +54,25 @@ const Board = () => {
 
   let drawBoard = (arr, row) => {
     let rowArr = arr.filter((sq) => (sq.Row === row ? true : false));
-    console.log(rowArr);
+    // console.log(rowArr);
     return (
       <tr id={row} key={row} className={row === 1 || row === 4 || row === 7 ? "top" : row === 9 ? "bottom" : ""}>
         {rowArr.map((squ) => {
           return (
             <td key={squ.ID} className={squ.Col === 1 || squ.Col === 4 || squ.Col === 7 ? "left" : squ.Col === 9 ? "right" : ""}>
-              {squ.ID}{" "}
+              {/* {squ.ID} */}
               <input
+                className="sqIpt"
                 type="number"
+                key={squ.ID.toString() + "a"}
                 onChange={(e) => {
-                  console.log(e.target.value, "goddd ");
+                  if (Number(e.target.value) > 0 && Number(e.target.value) < 10) {
+                    setIptVal({ userIpt: Number(e.target.value), squareID: squ.ID });
+                    SqrValues(square, Number(e.target.value), squ.ID);
+                    console.log(iptVal);
+
+                    // console.log(Number(e.target.value), iptVal, "goddd ");
+                  }
                 }}
               />
             </td>
