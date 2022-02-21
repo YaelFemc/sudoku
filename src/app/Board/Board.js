@@ -59,7 +59,7 @@ const Board = () => {
               <input
                 type="number"
                 onChange={(e) => {
-                  console.log(e.target.value);
+                  console.log(e.target.value, "go ");
                 }}
               />
             </td>
