@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Board.css";
 import SqrValues from "../SqValues/SqrValues";
 
 const Board = () => {
   const [square, setSquare] = useState([]);
-  const [iptVal, setIptVal] = useState({});
   //   const [iptID, setIptID] = useState(0);
 
   const createBoard = (arr) => {
@@ -15,9 +14,19 @@ const Board = () => {
     }
 
     createRowNCol(arr);
+    console.log(arr);
     if (arr.length > 0 && arr.length < 81) {
       setSquare(arr);
     }
+    // SqrValues(square);
+    // console.log(square);
+    if (square.length === 81) {
+      SqrValues(square);
+      console.log(square);
+      console.log(SqrValues(square));
+    }
+
+    // setSquare(square);
   };
 
   const createRowNCol = (arr) => {
@@ -44,9 +53,7 @@ const Board = () => {
     if (rowOverThr > 1 && rowOverThr <= 2) possibleRowC = [4, 5, 6];
     if (rowOverThr > 2 && rowOverThr <= 3) possibleRowC = [7, 8, 9];
 
-    let Cube = possibleColC.find((possibleCLCube) => {
-      return possibleRowC.includes(possibleCLCube);
-    });
+    let Cube = possibleColC.find((possibleCLCube) => possibleRowC.includes(possibleCLCube));
     return Cube;
   };
 
@@ -60,18 +67,19 @@ const Board = () => {
         {rowArr.map((squ) => {
           return (
             <td key={squ.ID} className={squ.Col === 1 || squ.Col === 4 || squ.Col === 7 ? "left" : squ.Col === 9 ? "right" : ""}>
-              {/* {squ.ID} */}
+              {/* ID: {squ.ID}
+              <br /> */}
+              {squ.value && squ.value > 0 ? ` ${squ.value}` : ""}
               <input
                 className="sqIpt"
                 type="number"
                 key={squ.ID.toString() + "a"}
                 onChange={(e) => {
                   if (Number(e.target.value) > 0 && Number(e.target.value) < 10) {
-                    setIptVal({ userIpt: Number(e.target.value), squareID: squ.ID });
-                    SqrValues(square, Number(e.target.value), squ.ID);
-                    console.log(iptVal);
-
-                    // console.log(Number(e.target.value), iptVal, "goddd ");
+                    square.map((sq) => {
+                      if (sq.ID === squ.ID) sq.UserIpt = Number(e.target.value);
+                    });
+                    setSquare(square);
                   }
                 }}
               />
